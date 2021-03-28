@@ -8,7 +8,9 @@ import org.springframework.stereotype.Repository;
 @Repository("EmployeeDao")
 public interface EmployeeDao {
 
-  public List<Employee> getEmployee();
+  public Employee getEmployeeById(int id);
+
+  public List<Employee> getAllEmployee();
 
   public void addEmployee(Employee employee);
 

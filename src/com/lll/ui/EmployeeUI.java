@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lll.services.EmployeeService;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/employee")
 @ResponseBody
@@ -28,9 +30,19 @@ public class EmployeeUI {
    * @author lll
    * @describe 查询
    */
-  @GetMapping("/")
-  public Employee getEmployee() {
-    return employeeServices.getEmployee();
+  @GetMapping("/{id}")
+  public Employee getEmployee(@PathVariable("id") int id) {
+    return employeeServices.getEmployeeById(id);
+  }
+
+  /**
+   * @time 2018年7月31日下午4:42:58
+   * @author lll
+   * @describe 查询
+   */
+  @GetMapping("/all")
+  public List<Employee> getAllEmployee() {
+    return employeeServices.getAllEmployee();
   }
 
   /**
@@ -52,7 +64,8 @@ public class EmployeeUI {
   public Employee addEmployee(@RequestBody Employee employee) {
     return employeeServices.addEmployee(employee);
   }
-  
+
+
   /**
    *@time 2018年7月31日下午4:46:36
    *@author lll

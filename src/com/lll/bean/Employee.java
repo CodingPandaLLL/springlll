@@ -1,6 +1,8 @@
 package com.lll.bean;
 
-public class Employee {
+import java.io.Serializable;
+
+public class Employee implements Serializable {
 
   private int id;
   
@@ -44,11 +46,11 @@ public class Employee {
     this.gender = gender;
   }
 
-  public String getdId() {
+  public String getDId() {
     return dId;
   }
 
-  public void setdId(String dId) {
+  public void setDId(String dId) {
     this.dId = dId;
   }
   

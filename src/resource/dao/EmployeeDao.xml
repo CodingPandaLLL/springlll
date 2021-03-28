@@ -4,7 +4,7 @@
 
 <mapper namespace="com.lll.dao.EmployeeDao">
 
-    <!-- <cache /> -->
+    <cache type="com.lll.utils.RedisCache" />
 
     <!-- ///////////////////////////基础接口定义///////////////////////////////// -->
 
@@ -18,13 +18,14 @@
     </resultMap>
 
 
-    <select id="getEmployee" resultMap="EmployeeResultMap">
+    <select id="getEmployeeById" resultMap="EmployeeResultMap" useCache="false">
 		SELECT
 		T.*
 		FROM employee T
+		where id = #{id}
 	</select>
 
-    <select id="getnewEmployee" resultMap="EmployeeResultMap">
+    <select id="getAllEmployee" resultMap="EmployeeResultMap" useCache="true">
 		SELECT
 		T.*
 		FROM employee T

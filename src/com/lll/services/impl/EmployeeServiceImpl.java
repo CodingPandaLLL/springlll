@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.lll.dao.EmployeeDao;
 import com.lll.services.EmployeeService;
 
+import java.util.List;
+
 @Service("EmployeeService")
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -15,15 +17,14 @@ public class EmployeeServiceImpl implements EmployeeService {
   private EmployeeDao employeeDao;
 
   @Override
-  public Employee getEmployee() {
-
-    // Employee employee = new Employee();
-    // employee.setEmail("lll@qw.com");
-    // employee.setGender("2");
-    // employee.setLastName("lll");
-
-    Employee employee = employeeDao.getEmployee().get(0);
+  public Employee getEmployeeById(int id) {
+    Employee employee = employeeDao.getEmployeeById(id);
     return employee;
+  }
+
+  @Override
+  public List<Employee> getAllEmployee() {
+    return employeeDao.getAllEmployee();
   }
 
   @Override
