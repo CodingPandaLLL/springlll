@@ -1,6 +1,6 @@
 package com.lll.bean;
 
-public class User {
+public class Employee {
 
   private int id;
   

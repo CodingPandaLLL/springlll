@@ -2,6 +2,7 @@ package com.lll.ui;
 
 import javax.annotation.Resource;
 
+import com.lll.bean.Employee;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,16 +13,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.lll.bean.User;
-import com.lll.services.UserService;
+import com.lll.services.EmployeeService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/employee")
 @ResponseBody
-public class UserUI {
+public class EmployeeUI {
 
   @Resource
-  private UserService userServices;
+  private EmployeeService employeeServices;
 
   /**
    * @time 2018年7月31日下午4:42:58
@@ -29,8 +29,8 @@ public class UserUI {
    * @describe 查询
    */
   @GetMapping("/")
-  public User getUser() {
-    return userServices.getUser();
+  public Employee getEmployee() {
+    return employeeServices.getEmployee();
   }
 
   /**
@@ -39,8 +39,8 @@ public class UserUI {
    * @describe 删除
    */
   @DeleteMapping("/{id}")
-  public void delUser(@PathVariable("id") int id) {
-     userServices.delUser(id);
+  public void delEmployee(@PathVariable("id") int id) {
+     employeeServices.delEmployee(id);
   }
 
   /**
@@ -49,8 +49,8 @@ public class UserUI {
    * @describe 增加
    */
   @PostMapping("/")
-  public User addUser(@RequestBody User user) {
-    return userServices.addUser(user);
+  public Employee addEmployee(@RequestBody Employee employee) {
+    return employeeServices.addEmployee(employee);
   }
   
   /**
@@ -59,8 +59,8 @@ public class UserUI {
    *@describe 修改
    */
   @PutMapping("/")
-  public User updateUser(@RequestBody User user) {
-    return userServices.updateUser(user);
+  public Employee updateEmployee(@RequestBody Employee employee) {
+    return employeeServices.updateEmployee(employee);
   }
   
   
