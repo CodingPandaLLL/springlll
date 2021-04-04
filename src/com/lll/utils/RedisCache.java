@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReadWriteLock;
 
 public class RedisCache implements Cache {
 
-    private final String redisIp = PropertiesUtils.getProperty("redis.ip");
+    private final String redisIp = PropertiesUtils.getProperty("redis.host");
     private final int redisPort = Integer.valueOf(PropertiesUtils.getProperty("redis.port")).intValue();
 
     private final String id;

@@ -43,7 +43,7 @@ public class EmployeeUI {
     /**
      * @time 2018年7月31日下午4:42:58
      * @author lll
-     * @describe 查询
+     * @describe 查询所有
      */
     @GetMapping("/all")
     public List<Employee> getAllEmployee() {
