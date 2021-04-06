@@ -17,18 +17,9 @@ public class DirectConsumer implements MessageListener {
 
     private Logger log = Logger.getLogger(DirectConsumer.class);
 
-    public DirectConsumer(){
-        log.info("===DirectConsumer====");
-    }
     @Override
     public void onMessage(Message message) {
-        log.info("------> DirectConsumer 接收到的消息为 : " + message);
-        try {
-            log.info("===endDat===="+ new String(message.getBody(),"UTF-8"));
-            String data=new String(message.getBody(),"UTF-8");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        log.info("------> 消息队列 接收到的消息为 : " + message);
     }
 
 }
