@@ -1,23 +1,16 @@
 package com.lll.ui;
 
-import javax.annotation.Resource;
-
 import com.lll.bean.Employee;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
+import com.lll.rebbitmq.MessageProducer;
 import com.lll.services.EmployeeService;
+import com.lll.utils.JacksonUtil;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/employee")
@@ -27,6 +20,8 @@ public class EmployeeUI {
     @Resource
     private EmployeeService employeeServices;
 
+    @Resource
+    private MessageProducer messageProducer;
 
 
     /**
@@ -68,6 +63,22 @@ public class EmployeeUI {
     @PostMapping("/")
     public Employee addEmployee(@RequestBody Employee employee) {
         return employeeServices.addEmployee(employee);
+    }
+
+    /**
+     * @time 2018年7月31日下午4:45:41
+     * @author lll
+     * @describe 通过消息对接异步添加
+     */
+    @PostMapping("/addByRebbitmq")
+    public String addByRebbitmq(@RequestBody Employee employee) {
+        try{
+            String message = JacksonUtil.toJsonString(employee);
+            messageProducer.send(message);
+            return  "success";
+        }catch (Exception e){
+            return  e.getMessage();
+        }
     }
 
 
