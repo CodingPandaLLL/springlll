@@ -22,7 +22,7 @@ public class MessageProducer {
     private AmqpTemplate amqpTemplate;
 
     public void send(Object message) {
-        log.info("发送消息为 : " + JacksonUtil.toJsonString(message));
+        log.info("消息队列--发送消息为 : " + JacksonUtil.toJsonString(message));
         amqpTemplate.convertAndSend("com.lll.employee", JacksonUtil.toJsonString(message));
     }
 }
