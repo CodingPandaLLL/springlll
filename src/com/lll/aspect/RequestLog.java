@@ -29,7 +29,7 @@ import java.util.Map;
  * @author lll
  * @date 2021/4/4 18:29
  */
-@Component
+@Component("requestLog")
 @Aspect
 public class RequestLog {
 
